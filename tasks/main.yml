@@ -1,0 +1,14 @@
+---
+# tasks file for servidesk
+
+- include: 01-get_sd.yml
+  tags: get_sd
+
+- include: 02-install_sd.yml
+  tags: install_sd
+
+- include: 03-rewrite_config_sd.yml
+  tags: rewrite_config_sd
+
+- include: 04-start_sd.yml
+  tags: start_sd

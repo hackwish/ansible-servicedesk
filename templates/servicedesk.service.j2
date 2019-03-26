@@ -1,0 +1,13 @@
+[Unit]
+Description=ManageEngine ServiceDesk-Plus
+AssertPathExists=/opt/deployer/ManageEngine/ServiceDesk/bin/
+[Service]
+Type=simple
+WorkingDirectory=/opt/deployer/ManageEngine/ServiceDesk/bin/
+User=deployer
+Group=servicedesk
+ExecStart=/opt/deployer/ManageEngine/ServiceDesk/bin/run.sh >>/var/log/servicedesk-plus.log 2>&1
+ExecReload=/bin/kill -SIGHUP $MAINPID
+ExecStop=/opt/deployer/ManageEngine/ServiceDesk/bin/shutdown.sh -S >>/var/log/servicedesk-plus.log 2>&1
+[Install]
+WantedBy=multi-user.target

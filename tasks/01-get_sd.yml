@@ -1,0 +1,11 @@
+---
+- name: Create SD directory
+  file: path=/opt/sd/ state=directory mode="a+r"
+
+- name: Get Servicedesk Plus
+  get_url:
+    url: "{{ sd_url }}"
+    dest: /opt/sd/ManageEngine_ServiceDesk_Plus_64bit.bin
+    force: no
+    mode: 0755
+

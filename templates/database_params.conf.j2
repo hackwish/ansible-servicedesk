@@ -1,0 +1,29 @@
+# $Id$
+# driver name
+drivername=org.postgresql.Driver
+
+# login username for database if any
+username={{ db_user }}
+
+# password for the db can be specified here
+password={{ db_password }}
+
+# url is of the form jdbc:subprotocol:DataSourceName for eg.jdbc:odbc:mickeylite
+url=jdbc:postgresql://{{ db_host }}:{{ db_port }}/servicedesk?charSet=UTF-8&loginTimeout={{ db_loginTimeout }}&socketTimeout={{ db_socketTimeout }}&connectTimeout={{ db_connectTimeout }}
+
+# Minumum Connection pool size
+minsize={{ db_min_conn_size }}
+
+# Maximum Connection pool size
+maxsize={{ db_max_conn_size }}
+
+# transaction Isolation level
+#values are Constanst defined in java.sql.connection type supported TRANSACTION_NONE    0
+#Allowed values are TRANSACTION_READ_COMMITTED , TRANSACTION_READ_UNCOMMITTED ,TRANSACTION_REPEATABLE_READ , TRANSACTION_SERIALIZABLE
+transaction_isolation=TRANSACTION_READ_COMMITTED
+
+#ExceptionSorterClass
+exceptionsorterclassname=com.adventnet.db.adapter.postgres.PostgresExceptionSorter
+
+blockingtimeout={{ db_blockingtimeout }}
+validconnectionsql=select 1 as test ;

@@ -1,0 +1,29 @@
+---
+- name: Create initial log file
+  copy:
+    content: ""
+    dest: /var/log/servicedesk-plus.log
+    force: no
+    group: servicedesk
+    owner: deployer
+    mode: 0644
+  when: sd_installed_exists.stat.exists
+
+- name: Create Systemd Service File
+  template:
+    src: servicedesk.service.j2
+    dest: /etc/systemd/system/servicedesk.service
+    force: yes
+    group: servicedesk
+    owner: deployer
+    mode: 0644
+  when: sd_installed_exists.stat.exists
+
+- name: start ServiceDesk
+  systemd: 
+    state: reloaded
+    name: servicedesk 
+    daemon_reload: yes
+    scope: system
+
+  when: sd_installed_exists.stat.exists

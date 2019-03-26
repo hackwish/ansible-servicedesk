@@ -1,0 +1,10 @@
+---
+- name: Rewrite PG database source
+  template:
+    src: database_params.conf.j2
+    dest: /opt/deployer/ManageEngine/ServiceDesk/conf/database_params.conf
+    force: yes
+    group: servicedesk
+    owner: deployer
+    mode: 0644
+  when: sd_installed_exists.stat.exists

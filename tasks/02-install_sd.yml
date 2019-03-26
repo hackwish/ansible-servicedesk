@@ -1,0 +1,30 @@
+---
+- name: Create a Servidesk group
+  group:
+      name=servicedesk
+      state=present
+
+- name: Add user(s) to Servidesk group
+  user:
+      name={{ item }}
+      group=servicedesk
+      state=present
+  with_items: 
+      - servicedesk
+      - deployer
+
+- name: Verify SD install file exists
+  stat: path=/opt/sd/ManageEngine_ServiceDesk_Plus_64bit.bin
+  register: sd_stat
+
+- name: Verify SD installed exists
+  stat: path=/opt/deployer/ManageEngine/ServiceDesk/bin/run.sh
+  register: sd_installed_exists
+
+- name: Install Servidesk base application
+  command: /opt/sd/ManageEngine_ServiceDesk_Plus_64bit.bin -silent
+  register: sd_install
+  become_user: deployer
+  when: sd_installed_exists.stat.exists == False
+  
+

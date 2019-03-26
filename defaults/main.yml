@@ -1,0 +1,15 @@
+---
+# defaults file for servidesk
+sd_url: https://www.manageengine.com/products/service-desk/91677414/ManageEngine_ServiceDesk_Plus_64bit.bin
+
+#database PG configs
+db_user: postgres
+db_password: postgres
+db_host: localhost
+db_port: 65432
+db_loginTimeout: 5
+db_socketTimeout: 1200
+db_connectTimeout: 30
+db_min_conn_size: 1
+db_max_conn_size: 100
+db_blockingtimeout: 5000

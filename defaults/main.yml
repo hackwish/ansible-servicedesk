@@ -1,6 +1,7 @@
 ---
 # defaults file for servidesk
 sd_url: https://www.manageengine.com/products/service-desk/91677414/ManageEngine_ServiceDesk_Plus_64bit.bin
+sd_slack_plugin_url: https://pitstop.manageengine.com/portal/api/kbArticles/24000537310259/attachments/btau0901cb4f5bb924400802eacd6dbbff071/content?portalId=b87ca73bf299ade4c685d36796bf6574047c91cff3f9636f
 
 #database PG configs
 db_user: postgres

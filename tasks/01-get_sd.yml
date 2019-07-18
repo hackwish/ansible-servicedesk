@@ -9,3 +9,9 @@
     force: no
     mode: 0755
 
+- name: Get Servicedesk Plus Slack plugin
+  get_url:
+    url: "{{ sd_slack_plugin_url }}"
+    dest: /opt/sd/sendtoSlack.zip
+    force: no
+    mode: 0755
